@@ -17,7 +17,6 @@ import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import android.os.ParcelFileDescriptor
 import android.util.Log
 import androidx.annotation.VisibleForTesting
-import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.annotation.WorkerThread
 import com.stevesoltys.seedvault.Clock
 import com.stevesoltys.seedvault.MAGIC_PACKAGE_MANAGER
@@ -88,13 +87,16 @@ internal class BackupCoordinator(
      * Starts a new [RestoreSet] with a new token (the current unix epoch in milliseconds).
      * Call this at least once before calling [initializeDevice]
      * which must be called after this method to properly initialize the backup transport.
+     *
+     * @return the token of the new [RestoreSet].
      */
     @Throws(IOException::class)
-    suspend fun startNewRestoreSet() {
+    private suspend fun startNewRestoreSet(): Long {
         val token = clock.time()
         Log.i(TAG, "Starting new RestoreSet with token $token...")
         settingsManager.setNewToken(token)
         plugin.startNewRestoreSet(token)
+        return token
     }
 
     /**
@@ -116,16 +118,14 @@ internal class BackupCoordinator(
      * [TRANSPORT_ERROR] (to retry following network error or other failure).
      */
     suspend fun initializeDevice(): Int = try {
-        val token = settingsManager.getToken()
-        if (token == null) {
-            Log.i(TAG, "No RestoreSet started, initialization is no-op.")
-        } else {
-            Log.i(TAG, "Initialize Device!")
-            plugin.initializeDevice()
-            Log.d(TAG, "Resetting backup metadata for token $token...")
-            plugin.getMetadataOutputStream().use {
-                metadataManager.onDeviceInitialization(token, it)
-            }
+        // we don't respect the intended system behavior here by always starting a new [RestoreSet]
+        // instead of simply deleting the current one
+        val token = startNewRestoreSet()
+        Log.i(TAG, "Initialize Device!")
+        plugin.initializeDevice()
+        Log.d(TAG, "Resetting backup metadata for token $token...")
+        plugin.getMetadataOutputStream(token).use {
+            metadataManager.onDeviceInitialization(token, it)
         }
         // [finishBackup] will only be called when we return [TRANSPORT_OK] here
         // so we remember that we initialized successfully
@@ -416,7 +416,7 @@ internal class BackupCoordinator(
         else -> throw IllegalStateException("Unexpected state in finishBackup()")
     }
 
-    @VisibleForTesting(otherwise = PRIVATE)
+    @VisibleForTesting
     internal suspend fun backUpApksOfNotBackedUpPackages() {
         Log.d(TAG, "Checking if APKs of opt-out apps need backup...")
         val notBackedUpPackages = packageService.notBackedUpPackages

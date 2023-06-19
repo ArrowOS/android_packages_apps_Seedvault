@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="storage_fragment_warning">Quienes tengan acceso a su ubicación de almacenamiento pueden ver qué aplicaciones utiliza, pero no podrán acceder a los datos de estas.</string>
-    <string name="about_source_code">Código fuente: https://github.com/seedvault-app/seedvault</string>
     <string name="about_title">Acerca de</string>
     <string name="storage_internal_warning_use_anyway">Usar de todos modos</string>
     <string name="storage_internal_warning_title">Atención</string>
@@ -36,11 +35,9 @@
     <string name="settings_backup_location_internal">Almacenamiento interno</string>
     <string name="notification_restore_error_text">Conecte sus %1$s antes de instalar la aplicación para restaurar sus datos desde la copia de seguridad.</string>
     <string name="notification_error_action">Corregir</string>
-    <string name="about_sponsor">Patrocinado por: <a href="https://www.calyxinstitute.org">Instituto Calyx</a> para usar en <a href="https://calyxos.org">CalyxOS</a></string>
-    <string name="about_design">Diseño por: <a href="https://www.glennsorrentino.com/">Glenn Sorrentino</a></string>
-    <string name="about_author">Escrito por: <a href="https://github.com/stevesoltys"> Steve Soltys </a> y <a href="https://blog.grobox.de"> Torsten Grote </a></string>
-    <string name="about_license">Licencia: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache2</a></string>
-    <string name="about_summary">Una aplicación de copia de seguridad que utiliza la API de copia de seguridad interna de Android.</string>
+    <string name="about_summary">Una aplicación de copia de seguridad que utiliza la API de copia de seguridad interna de Android. Es Software Libre, liberado bajo licencia Apache 2.
+\n
+\nComo todo software, Seedvault puede contener errores o vulnerabilidades.</string>
     <string name="storage_internal_warning_choose_other">Escoger otro</string>
     <string name="storage_internal_warning_message">Ha elegido almacenamiento interno para su copia de seguridad. Esto no estará disponible cuando su teléfono se pierda o se rompa.</string>
     <string name="restore_finished_error">Ocurrió un error al restaurar la copia de seguridad.</string>
@@ -113,7 +110,7 @@
     <string name="data_management_label">Copia de seguridad de Seedvault</string>
     <string name="restore_restoring_error_message">Puede reinstalar estas aplicaciones manualmente y la restauración automática intentará restaurar sus datos (cuando esté activada).</string>
     <string name="backup_app_not_yet_backed_up">Esperando para la copia de seguridad…</string>
-    <string name="about_version">Versión: %s</string>
+    <string name="about_version">Edición: %s</string>
     <string name="restore_restoring_error_title">No se pueden restaurar algunas aplicaciones</string>
     <string name="restore_installing_tap_to_install">Pulse para instalar</string>
     <string name="restore_installing_error_message">Los datos solo se pueden restaurar si se ha instalado una aplicación.
@@ -182,4 +179,28 @@
     <string name="error_no_store">Error: No hay ninguna tienda de aplicaciones instalada</string>
     <string name="storage_fake_davx5_summary_installed">Toque para configurar un montaje WebDAV</string>
     <string name="storage_fake_davx5_summary_unavailable">El montaje de WebDAV no está disponible. Configure uno.</string>
+    <string name="notification_backup_disabled">Copia de seguridad no activada</string>
+    <string name="backup_app_in_progress">Copia de seguridad en progreso</string>
+    <string name="backup_app_success">Datos guardados</string>
+    <string name="restore_app_status_failed">La restauración ha fallado</string>
+    <string name="restore_app_status_warning">Advertencia sobre la restauración</string>
+    <string name="restore_app_status_installing">Reinstalando</string>
+    <string name="backup_app_warning">Advertencia sobre la copia de seguridad</string>
+    <string name="restore_app_status_installed">Reinstalado</string>
+    <string name="restore_app_status_restored">Datos restaurados</string>
+    <string name="restore_app_status_install_error">No se ha podido instalar</string>
+    <string name="settings_expert_logcat_summary">Los desarrolladores pueden diagnosticar errores con estos registros.
+\n
+\nAdvertencia: el archivo de registro puede contener información personal. ¡Revíselo antes y elimínelo después de compartirlo!</string>
+    <string name="settings_expert_logcat_error">Error: no se pudo guardar el registro</string>
+    <string name="settings_expert_logcat_title">Guardar el registro de la aplicación</string>
+    <string name="settings_backup_dialog_title">¿Desactivar realmente las copias de seguridad de las aplicaciones\?</string>
+    <string name="settings_backup_dialog_message">Cuando vuelva a activar las copias de seguridad, el proceso de copia de seguridad puede tardar más de lo habitual y usará espacio de almacenamiento adicional.</string>
+    <string name="settings_backup_dialog_disable">Apagar de todos modos</string>
+    <string name="storage_not_recommended"><xliff:g example="Skynet">%1$s</xliff:g> (No recomendado)</string>
+    <string name="about_contributing_organizations_title">Organizaciones colaboradoras</string>
+    <string name="about_contributing_organizations_content"><a href="https://www.calyxinstitute.org">Instituto Calyx</a> para su uso en <a href="https://calyxos.org">CalyxOS</a>
+\n<a href="https://nlnet.nl/project/Seedvault/">Fondo NGI0 PET de NLnet</a></string>
+    <string name="about_contributor_headline">Colaboradores</string>
+    <string name="about_contributor_content">En GitHub encontrará una <a href="https://github.com/seedvault-app/seedvault/graphs/contributors">lista de colaboradores</a>.</string>
 </resources>
